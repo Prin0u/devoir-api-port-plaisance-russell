@@ -17,6 +17,13 @@ dotenv.config();
 const app = express();
 
 /**
+ * Import des routes
+ */
+const userRoutes = require("./routes/usersRoutes");
+const catwaysRoutes = require("./routes/catwaysRoutes");
+const reservationsRoutes = require("./routes/reservationsRoutes");
+
+/**
  *  Middleware pour gérer les CORS (Cross-Origin Resource Sharing).
  */
 app.use(cors());
@@ -57,6 +64,13 @@ mongoose
   })
   .then(() => console.log("Mongo DB connecté !"))
   .catch((err) => console.error("Erreur de connexion MongoDB :", err));
+
+/**
+ * Liaison des routes API
+ */
+app.use("/users", userRoutes);
+app.use("/catways", catwaysRoutes);
+app.use("/reservations", reservationsRoutes);
 
 /**
  * Route d'accueil : affiche la page d'accueil avec le moteur de vues EJS
