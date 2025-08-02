@@ -11,6 +11,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const path = require("path");
 const dotenv = require("dotenv");
+const errorMiddleware = require("./middlewares/errorMiddleware");
 
 dotenv.config();
 
@@ -44,7 +45,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
 /**
- * Configuretion du moteur de vues EJS.
+ * Configuration du moteur de vues EJS.
  */
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -86,13 +87,23 @@ app.get("/", (req, res) => {
 
 /**
  * Middleware pour gérer les erreurs 404 (page non trouvée).
- *
+ * Ce middleware doit être placé après toutes les routes.
  * @param {Object} req - Requête HTTP non prise en charge.
  * @param {Object} res - Réponse HTTP.
  */
 app.use((req, res) => {
   res.status(404).render("404", { title: "Page non trouvée" });
 });
+
+/**
+ * Middleware global pour la gestion des erreurs côté serveur.
+ * Ce middleware capture toutes les erreurs passées via next(err).
+ * @param {Error} err - Objet erreur capturé.
+ * @param {Object} req - Requête HTTP.
+ * @param {Object} res - Réponse HTTP.
+ * @param {Function} next - Fonction pour passer au middleware suivant.
+ */
+app.use(errorMiddleware);
 
 /**
  * Export du module app pour utilisation dans server.js.
