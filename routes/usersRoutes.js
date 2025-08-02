@@ -1,21 +1,26 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/usersController");
+const validateRequiredFields = require("../middlewares/validationMiddleware");
+const authMiddleware = require("../middlewares/authMiddleware");
+/**
+ * Créer un utilisateur (validation des champs requis)
+ */
+router.post(
+  "/",
+  validateRequiredFields(["username", "email", "password"]),
+  userController.createUser
+);
 
 /**
- * Créer un utilisateur
+ * Lister tous les utilisateurs (authentification obligatoire)
  */
-router.post("/", userController.createUser);
+router.get("/", authMiddleware, userController.getAllUsers);
 
 /**
- * Lister tous les utilisateurs
+ * Récupérer un utilisateur avec l'email (authentification obligatoire)
  */
-router.get("/", userController.getAllUsers);
-
-/**
- * Récupérer un utilisateur avec l'email
- */
-router.get("/:email", userController.getUserByEmail);
+router.get("/:email", authMiddleware, userController.getUserByEmail);
 
 /**
  * Modifier un utilisateur
@@ -23,8 +28,8 @@ router.get("/:email", userController.getUserByEmail);
 router.put("/:email", userController.updateUser);
 
 /**
- * Supprimer un utilisateur
+ * Supprimer un utilisateur (authentification obligatoire)
  */
-router.delete("/:email", userController.deleteUser);
+router.delete("/:email", authMiddleware, userController.deleteUser);
 
 module.exports = router;
