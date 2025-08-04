@@ -3,40 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/index.css" />
     <title>Port de plaisance Russell</title>
   </head>
   <body>
-    <header>
-      <h1>Port de plaisance Russell</h1>
-    </header>
+    <div class="contenu-principal">
+      <header>
+        <h1>Port de plaisance Russell</h1>
+      </header>
 
-    <main>
-      <section>
-        <h2>
-          Bienvenue sur mon application de gestion du port de plaisance Russell.
-        </h2>
-        <p>
-          Cette application vous permet de gérer les catways, les réservations
-          et les utilisateurs du port de plaisance Russell.
-        </p>
-      </section>
+      <main>
+        <section>
+          <h2>
+            Bienvenue sur mon application de gestion du port de plaisance
+            Russell.
+          </h2>
+          <p>
+            Cette application vous permet de gérer les catways, les réservations
+            et les utilisateurs du port de plaisance Russell.
+          </p>
+        </section>
 
-      <section>
-        <h2>Connexion</h2>
-        <form action="/users/login" method="POST">
-          <label for="email">Email :</label>
-          <input type="email" id="email" name="email" required />
+        <section class="login">
+          <h2>Connexion</h2>
+          <form action="/users/login" method="POST">
+            <div class="form-login">
+              <label for="email">Email :</label>
+              <input type="email" id="email" name="email" required /><br />
+            </div>
+            <div class="form-login">
+              <label for="password">Mot de passe :</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+              /><br />
+            </div>
+            <div class="connect-button">
+              <button type="submit">Se connecter</button>
+            </div>
+          </form>
+        </section>
 
-          <label for="password">Mot de passe :</label>
-          <input type="password" id="password" name="password" required />
-
-          <button type="submit">Se connecter</button>
-        </form>
-      </section>
-
-      <section>
-        <a href="/docs">Consulter la documentation de l'API</a>
-      </section>
-    </main>
+        <section></section>
+      </main>
+    </div>
+    <footer>
+      <a href="/docapi">Consulter la documentation de l'API</a>
+    </footer>
   </body>
 </html>

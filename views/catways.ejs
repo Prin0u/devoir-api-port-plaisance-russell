@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/catways.css">
     <title>Gestion des Catways - Port de plaisance Russell</title>
   </head>
   <body>
@@ -11,7 +12,9 @@
       <nav>
         <ul>
           <li><a href="/dashboard">Tableau de bord</a></li>
-          <li><a href="/docs">Documentation API</a></li>
+          <li><a href="/docapi">Documentation API</a></li>
+          <li>  <a href="#" onclick="window.history.back(); return false;">Retour</a></li>
+
           <li><a href="/">Déconnexion</a></li>
         </ul>
       </nav>
@@ -26,8 +29,9 @@
           <% }) %>
         </div>
       <% } %>
-      <section>
-        <h2>Liste des Catways</h2>
+      <h2>Liste des Catways</h2>
+      <section class="catways-list">
+        
         <% if(catways.length === 0) { %>
         <p>Aucun catway trouvé.</p>
         <%} else { %>
@@ -66,7 +70,7 @@
         </table>
         <% } %>
       </section>
-      <section>
+      <section class="create-catways">
         <h2>Créer un nouveau Catway</h2>
         <form action="/catways" method="POST">
           <label for="catwayNumber">Numéro :</label>

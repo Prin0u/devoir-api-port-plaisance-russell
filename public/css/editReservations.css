@@ -1,0 +1,40 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.edit-reservations {
+  display: flex;
+  flex-direction: column; /* IMPORTANT pour aligner en colonne */
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.edit-reservations form {
+  display: flex;
+  flex-direction: column; /* IMPORTANT aussi */
+  gap: 15px;
+  width: 300px;
+}
+
+.edit-reservations label {
+  text-align: center;
+}
+
+.edit-reservations input,
+.edit-reservations select {
+  padding: 8px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.edit-reservations button {
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}
