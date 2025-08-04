@@ -12,10 +12,32 @@ const cors = require("cors");
 const path = require("path");
 const dotenv = require("dotenv");
 const errorMiddleware = require("./middlewares/errorMiddleware");
+const cookieParser = require("cookie-parser");
+const methodOverride = require("method-override");
+const session = require("express-session");
+const flash = require("connect-flash");
 
 dotenv.config();
 
 const app = express();
+
+/**
+ * Middleware pour simuler PUT et DELETE dans les formulaires HTML
+ */
+app.use(methodOverride("_method"));
+
+/**
+ * Middleware pour gérer les sessions et les messages flash
+ */
+app.use(
+  session({
+    secret: "tonSecretUltraSecret",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+app.use(flash());
 
 /**
  * Import des routes
@@ -23,7 +45,7 @@ const app = express();
 const userRoutes = require("./routes/usersRoutes");
 const catwaysRoutes = require("./routes/catwaysRoutes");
 const reservationsRoutes = require("./routes/reservationsRoutes");
-
+const dashboardRoutes = require("./routes/dashboardRoutes");
 /**
  *  Middleware pour gérer les CORS (Cross-Origin Resource Sharing).
  */
@@ -43,7 +65,10 @@ app.use(express.urlencoded({ extended: true }));
  * Middleware pour logger les requêtes HTTP en mode 'dev'.
  */
 app.use(morgan("dev"));
-
+/**
+ * Middleware pour stocker le token dans un cookie
+ */
+app.use(cookieParser());
 /**
  * Configuration du moteur de vues EJS.
  */
@@ -72,6 +97,7 @@ mongoose
 app.use("/users", userRoutes);
 app.use("/catways", catwaysRoutes);
 app.use("/reservations", reservationsRoutes);
+app.use("/", dashboardRoutes);
 
 /**
  * Route d'accueil : affiche la page d'accueil avec le moteur de vues EJS
@@ -84,6 +110,8 @@ app.use("/reservations", reservationsRoutes);
 app.get("/", (req, res) => {
   res.render("index", { title: "Port de plaisance Russell" });
 });
+
+// -------------------- GESTION DES ERREURS --------------------
 
 /**
  * Middleware pour gérer les erreurs 404 (page non trouvée).

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestion des Catways - Port de plaisance Russell</title>
+  </head>
+  <body>
+    <header>
+      <h1>Gestion des Catways</h1>
+      <nav>
+        <ul>
+          <li><a href="/dashboard">Tableau de bord</a></li>
+          <li><a href="/docs">Documentation API</a></li>
+          <li><a href="/">Déconnexion</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <% if (messages && Object.keys(messages).length > 0) { %>
+        <div id="flash-messages">
+          <% Object.keys(messages).forEach(type => { %>
+            <% messages[type].forEach(msg => { %>
+              <div class="flash <%= type %>"><%= msg %></div>
+            <% }) %>
+          <% }) %>
+        </div>
+      <% } %>
+      <section>
+        <h2>Liste des Catways</h2>
+        <% if(catways.length === 0) { %>
+        <p>Aucun catway trouvé.</p>
+        <%} else { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Numéro</th>
+              <th>Type</th>
+              <th>Etat</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% catways.forEach(catway => { %>
+            <tr>
+              <td><%= catway.catwayNumber %></td>
+              <td><%= catway.catwayType %></td>
+              <td><%= catway.catwayState %></td>
+              <td>
+                <form
+                  action="/catways/<%= catway._id %>?_method=DELETE"
+                  method="POST"
+                >
+                  <button
+                    type="submit"
+                    onclick="return confirm('Confirmer la suppression ?')"
+                  >
+                    Supprimer
+                  </button>
+                </form>
+                <a href="/catways/<%= catway._id %>/edit">Modifier</a>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <% } %>
+      </section>
+      <section>
+        <h2>Créer un nouveau Catway</h2>
+        <form action="/catways" method="POST">
+          <label for="catwayNumber">Numéro :</label>
+          <input type="text" name="catwayNumber" id="catwayNumber" required />
+
+          <label for="catwayType">Type :</label>
+          <select name="catwayType" id="catwayType" required>
+            <option value="">-- Choisir un type --</option>
+            <option value="petit">Petit</option>
+            <option value="moyen">Moyen</option>
+            <option value="long">Grand</option>
+          </select>
+
+          <label for="catwayState">État :</label>
+          <select id="catwayState" name="catwayState" required>
+            <option value="">-- Choisir un état --</option>
+            <option value="disponible">Disponible</option>
+            <option value="occupé">Occupé</option>
+            <option value="en maintenance">En maintenance</option>
+          </select>
+          <button type="submit">Ajouter</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
