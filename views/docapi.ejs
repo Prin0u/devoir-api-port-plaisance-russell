@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Documentation de l'API</title>
+  <link rel="stylesheet" href="/css/docapi.css">
+</head>
+<body>
+    <header>
+  <h1>Documentation de l'API</h1>
+
+  <p>Cette API permet de gérer des utilisateurs, les catways ainsi que les réservations du port de plaisance Russell : Création, Récupération, Modification et Suppression.</p>
+  <p>URL de base : <code>localhost:3000</code></p>
+</header>
+<main>
+  <section class="endpoint">
+    <h2>GET /users</h2>
+    <p><strong>Description :</strong> Récupère la liste de tous les utilisateurs.</p>
+    <p><strong>Méthode :</strong> GET</p>
+    <p><strong>Paramètres :</strong> Aucun</p>
+    <p><strong>Exemple de requête :</strong></p>
+    <pre>GET https://monapi.com/api/users</pre>
+    <p><strong>Exemple de réponse :</strong></p>
+    <pre>{
+  "users": [
+    { "id": 1, "name": "Alice" },
+    { "id": 2, "name": "Bob" }
+  ]
+}</pre>
+  </section>
+
+  <section class="endpoint">
+    <h2>GET /users/:id</h2>
+    <p><strong>Description :</strong> Récupère un utilisateur par son ID.</p>
+    <p><strong>Méthode :</strong> GET</p>
+    <p><strong>Paramètre :</strong> <code>:id</code> = identifiant de l'utilisateur</p>
+    <p><strong>Exemple de requête :</strong></p>
+    <pre>GET https://monapi.com/api/users/1</pre>
+    <p><strong>Exemple de réponse :</strong></p>
+    <pre>{
+  "id": 1,
+  "name": "Alice"
+}</pre>
+  </section>
+
+  <section class="endpoint">
+    <h2>POST /users</h2>
+    <p><strong>Description :</strong> Crée un nouvel utilisateur.</p>
+    <p><strong>Méthode :</strong> POST</p>
+    <p><strong>Body requis (JSON) :</strong></p>
+    <pre>{
+  "name": "Charlie"
+}</pre>
+    <p><strong>Exemple de réponse :</strong></p>
+    <pre>{
+  "id": 3,
+  "name": "Charlie"
+}</pre>
+  </section>
+
+  <section class="errors">
+    <h2>Erreurs courantes</h2>
+    <ul>
+      <li><strong>404 Not Found :</strong> L’utilisateur demandé n’existe pas</li>
+      <li><strong>400 Bad Request :</strong> Données manquantes ou mal formatées</li>
+      <li><strong>500 Server Error :</strong> Problème interne du serveur</li>
+    </ul>
+  </section>
+</main>
+<footer>
+    <a href="/dashboard">Retour au tableau de bord</a>
+</footer>
+</body>
+</html>

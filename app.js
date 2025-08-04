@@ -46,6 +46,8 @@ const userRoutes = require("./routes/usersRoutes");
 const catwaysRoutes = require("./routes/catwaysRoutes");
 const reservationsRoutes = require("./routes/reservationsRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
+const docapiRoutes = require("./routes/docapiRoutes");
+
 /**
  *  Middleware pour gérer les CORS (Cross-Origin Resource Sharing).
  */
@@ -98,6 +100,7 @@ app.use("/users", userRoutes);
 app.use("/catways", catwaysRoutes);
 app.use("/reservations", reservationsRoutes);
 app.use("/", dashboardRoutes);
+app.use("/docapi", docapiRoutes);
 
 /**
  * Route d'accueil : affiche la page d'accueil avec le moteur de vues EJS

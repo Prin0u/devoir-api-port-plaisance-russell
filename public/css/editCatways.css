@@ -1,0 +1,39 @@
+body {
+  font-family: Arial, sans-serif;
+}
+h1 {
+  text-align: center;
+}
+
+.edit-catways {
+  display: flex;
+  flex-direction: column; /* IMPORTANT pour aligner en colonne */
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.edit-catways form {
+  display: flex;
+  flex-direction: column; /* IMPORTANT aussi */
+  gap: 15px;
+  width: 300px;
+}
+
+.edit-catways label {
+  text-align: center;
+}
+
+.edit-catways input,
+.edit-catways select {
+  padding: 8px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.edit-catways button {
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}

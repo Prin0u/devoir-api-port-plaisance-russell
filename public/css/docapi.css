@@ -1,0 +1,11 @@
+body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+ul {
+  padding-left: 40px;
+  list-style-position: outside;
+  text-align: left;
+  display: inline-block;
+}
