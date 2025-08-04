@@ -39,4 +39,9 @@ router.put(
  */
 router.delete("/:id", authMiddleware, catwaysController.deleteCatway);
 
+/**
+ * Afficher le formulaire de modification d'un catway
+ */
+router.get("/:id/edit", authMiddleware, catwaysController.showEditForm);
+
 module.exports = router;

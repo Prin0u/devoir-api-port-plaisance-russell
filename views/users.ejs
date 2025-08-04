@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestion des Utilisateurs</title>
+  <link rel="stylesheet" href="./css/users.css">
+</head>
+<body>
+  <header>
+    <h1>Utilisateurs</h1>
+    <nav>
+      <ul>
+        <li><a href="/dashboard">Tableau de bord</a></li>
+        <li><a href="/catways">Catways</a></li>
+        <li><a href="/reservations">Réservations</a></li>
+        <li><a href="/docs">Documentation API</a></li>
+        <li><a href="/">Déconnexion</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+       
+    <% if (messages && Object.keys(messages).length > 0) { %>
+      <div id="flash-messages">
+        <% Object.keys(messages).forEach(type => { %>
+          <% messages[type].forEach(msg => { %>
+            <div class="flash <%= type %>"><%= msg %></div>
+          <% }) %>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <section>
+      <h2>Liste des utilisateurs</h2>
+      <% if (users && users.length === 0) { %>
+        <p>Aucun utilisateur trouvé.</p>
+      <% } else if (users && users.length > 0) { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Nom d'utilisateur</th>
+              <th>Email</th>
+              <th>Rôle</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% users.forEach(function(user) { %>
+              <tr>
+                <td><%= user.username ? user.username : "—" %></td>
+                <td><%= user.email %></td>
+                <td><%= user.role %></td>
+                <td>
+                  <form action="/users/<%= encodeURIComponent(user.email) %>?_method=DELETE" method="POST">
+                    <button
+                    type="submit"
+                    onclick="return confirm('Confirmer la suppression ?')"
+                  >
+                    Supprimer
+                  </button>
+                  </form>
+                  <a href="/users/<%= encodeURIComponent(user.email) %>/edit">Modifier</a>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <p>Erreur de chargement des utilisateurs.</p>
+      <% } %>
+    </section>
+
+    <section>
+      <h2>Créer un nouvel utilisateur</h2>
+      <form action="/users" method="POST">
+        <label for="username">Nom d'utilisateur</label>
+        <input type="text" name="username" id="username" required>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="password">Mot de passe</label>
+        <input type="password" name="password" id="password" required>
+
+        <button type="submit">Créer</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

@@ -14,7 +14,7 @@ const catwaySchema = new Schema(
     catwayType: {
       type: String,
       required: true,
-      enum: ["long", "short"],
+      enum: ["long", "moyen", "petit"],
     },
     catwayState: {
       type: String,

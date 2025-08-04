@@ -6,19 +6,28 @@ const reservationsController = require("../controllers/reservationsController");
  * Créer une réservation
  */
 router.post("/", reservationsController.createReservation);
+
 /**
  * Lister toutes les réservations
  */
 
 router.get("/", reservationsController.getAllReservations);
+
+/**
+ * Formulaire de mofification d'une réservation
+ */
+router.get("/:id/edit", reservationsController.showEditReservationForm);
+
 /**
  * Récupérer une réservation par son numéro
  */
 router.get("/:id", reservationsController.getReservationById);
+
 /**
  * Modifier une réservation
  */
 router.put("/:id", reservationsController.updateReservation);
+
 /**
  * Supprimer une réservation
  */

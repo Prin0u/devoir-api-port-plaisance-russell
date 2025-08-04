@@ -5,20 +5,23 @@ const Reservation = require("../models/reservations");
  */
 exports.createReservation = async (req, res) => {
   try {
-    const { userEmail, catwayNumber, startDate, endDate } = req.body;
+    const { clientName, boatName, catwayNumber, startDate, endDate } = req.body;
 
-    if (!userEmail || !catwayNumber || !startDate || !endDate) {
+    if (!clientName || !boatName || !catwayNumber || !startDate || !endDate) {
       return res.status(400).json({ message: "Champs requis manquants" });
     }
 
     const reservation = new Reservation({
-      userEmail,
+      clientName,
+      boatName,
       catwayNumber,
       startDate,
       endDate,
     });
 
     await reservation.save();
+    req.flash("success", "Réservation créée avec succès !");
+    res.redirect("/reservations");
 
     res.status(201).json({ message: "Réservation créée", reservation });
   } catch (error) {
@@ -32,7 +35,10 @@ exports.createReservation = async (req, res) => {
 exports.getAllReservations = async (req, res) => {
   try {
     const reservations = await Reservation.find();
-    res.json(reservations);
+    res.render("reservations", {
+      reservations,
+      messages: req.flash(),
+    });
   } catch (error) {
     res.status(500).json({ message: "Erreur serveur", error });
   }
@@ -68,9 +74,25 @@ exports.updateReservation = async (req, res) => {
     if (!reservation) {
       return res.status(404).json({ message: "Réservation non trouvée" });
     }
-    res.json({ message: "Réservation modifiée", reservation });
+    req.flash("success", "Révervation modifié avec succès !");
+    res.redirect("/reservations");
   } catch (error) {
     res.status(500).json({ message: "Erreur serveur", error });
+  }
+};
+
+/**
+ * Afficher le formulaire d'édition d'une réservation
+ */
+exports.showEditReservationForm = async (req, res) => {
+  try {
+    const reservation = await Reservation.findById(req.params.id);
+    if (!reservation) {
+      return res.status(404).send("Réservation non trouvée");
+    }
+    res.render("editReservations", { reservation });
+  } catch (error) {
+    res.status(500).send("Erreur serveur");
   }
 };
 
@@ -84,7 +106,8 @@ exports.deleteReservation = async (req, res) => {
       return res.status(404).json({ message: "Réservation non trouvée" });
     }
 
-    res.json({ message: "Réservation supprimée" });
+    req.flash("success", "Réservation supprimée avec succès !");
+    res.redirect("/reservations");
   } catch (error) {
     res.status(500).json({ message: "Erreur serveur", error });
   }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier le catway</title>
+</head>
+<body>
+    <header>
+        <h1>Modifier le Catway</h1>
+        <nav>
+            <ul>
+                <li><a href="/dashboard">Tableau de bord</a></li>
+                <li><a href="/catways">Retour à la liste</a></li>
+                <li><a href="/logout">Déconnexion</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form action="/catways/<%= catway._id %>?_method=PUT" method="POST">
+          <label for="catwayNumber">Numéro :</label>
+          <input
+            type="text"
+            id="catwayNumber"
+            name="catwayNumber"
+            value="<%= catway.catwayNumber %>"
+            required
+          />
+  
+          <label for="catwayType">Type :</label>
+          <select name="catwayType" id="catwayType" required>
+            <option value="petit" <% if (catway.catwayType === 'petit') { %>selected<% } %>>Petit</option>
+            <option value="moyen" <% if (catway.catwayType === 'moyen') { %>selected<% } %>>Moyen</option>
+            <option value="grand" <% if (catway.catwayType === 'grand') { %>selected<% } %>>Grand</option>
+          </select>
+  
+          <label for="catwayState">État :</label>
+          <select name="catwayState" id="catwayState" required>
+            <option value="disponible" <% if (catway.catwayState === 'disponible') { %>selected<% } %>>Disponible</option>
+            <option value="occupé" <% if (catway.catwayState === 'occupé') { %>selected<% } %>>Occupé</option>
+            <option value="en maintenance" <% if (catway.catwayState === 'en maintenance') { %>selected<% } %>>En maintenance</option>
+          </select>
+  
+          <button type="submit">Enregistrer les modifications</button>
+        </form>
+    </main>
+</body>
+</html>

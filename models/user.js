@@ -22,6 +22,11 @@ const userSchema = new Schema(
       required: true,
       minlength: [6, "Le mot de passe doit contenir au moins 6 caractères"],
     },
+    role: {
+      type: String,
+      enum: ["utilisateur", "admin"],
+      default: "utilisateur",
+    },
   },
   { timestamps: true }
 );

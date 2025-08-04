@@ -13,6 +13,11 @@ router.post(
 );
 
 /**
+ * Connexion d'un utilisateur
+ */
+router.post("/login", userController.loginUser);
+
+/**
  * Lister tous les utilisateurs (authentification obligatoire)
  */
 router.get("/", authMiddleware, userController.getAllUsers);
@@ -28,8 +33,21 @@ router.get("/:email", authMiddleware, userController.getUserByEmail);
 router.put("/:email", userController.updateUser);
 
 /**
+ * Afficher le formulaire d'édition d'un utilisateur
+ */
+router.get("/:email/edit", authMiddleware, userController.showEditForm);
+
+/**
  * Supprimer un utilisateur (authentification obligatoire)
  */
 router.delete("/:email", authMiddleware, userController.deleteUser);
+
+/**
+ * Déconnexion d'un utilisateur
+ */
+router.post("/logout", (req, res) => {
+  res.cookie("token", " ", { maxAge: 0, httpOnly: true });
+  res.redirect("/");
+});
 
 module.exports = router;

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modifier l'utilisateur</title>
+  <link rel="stylesheet" href="/css/users.css" />
+</head>
+<body>
+  <header>
+    <h1>Modifier l'utilisateur</h1>
+    <nav>
+      <ul>
+        <li><a href="/dashboard">Tableau de bord</a></li>
+        <li><a href="/users">Utilisateurs</a></li>
+        <li><a href="/catways">Catways</a></li>
+        <li><a href="/reservations">Réservations</a></li>
+        <li><a href="/docs">Documentation API</a></li>
+        <li><a href="/">Déconnexion</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <% if (messages && messages.success) { %>
+      <div class="flash-success"><%= messages.success[0] %></div>
+    <% } %>
+    <% if (messages && messages.error) { %>
+      <div class="flash-error"><%= messages.error[0] %></div>
+    <% } %>
+
+    <form action="/users/<%= encodeURIComponent(user.email) %>?_method=PUT" method="POST">
+      <label for="username">Nom d'utilisateur :</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        value="<%= user.username %>"
+        required
+      />
+
+      <label for="email">Email :</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        value="<%= user.email %>"
+        readonly
+      />
+      <label for="password">Nouveau mot de passe :</label>
+        <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Laisser vide pour ne pas changer"
+/>
+
+      <label for="role">Rôle :</label>
+      <select id="role" name="role" required>
+        <option value="utilisateur" <%= (user.role === 'utilisateur' || !user.role) ? 'selected' : '' %>>Utilisateur</option>
+        <option value="admin" <%= user.role === 'admin' ? 'selected' : '' %>>Admin</option>
+      </select>
+
+      <button type="submit">Mettre à jour</button>
+      <a href="/users">Annuler</a>
+    </form>
+  </main>
+</body>
+</html>
