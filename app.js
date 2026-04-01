@@ -31,7 +31,7 @@ app.use(methodOverride("_method"));
  */
 app.use(
   session({
-    secret: "tonSecretUltraSecret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   })
@@ -111,7 +111,10 @@ app.use("/docapi", docapiRoutes);
  * @param {Object} res - L'objet réponse HTTP
  */
 app.get("/", (req, res) => {
-  res.render("index", { title: "Port de plaisance Russell" });
+  res.render("index", {
+    title: "Port de plaisance Russell",
+    messages: req.flash(),
+  });
 });
 
 // -------------------- GESTION DES ERREURS --------------------

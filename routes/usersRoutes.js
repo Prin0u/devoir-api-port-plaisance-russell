@@ -30,7 +30,7 @@ router.get("/:email", authMiddleware, userController.getUserByEmail);
 /**
  * Modifier un utilisateur
  */
-router.put("/:email", userController.updateUser);
+router.put("/:email", authMiddleware, userController.updateUser);
 
 /**
  * Afficher le formulaire d'édition d'un utilisateur

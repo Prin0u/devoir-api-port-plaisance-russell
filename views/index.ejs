@@ -26,6 +26,9 @@
 
         <section class="login">
           <h2>Connexion</h2>
+          <% if (messages.error && messages.error.length > 0) { %>
+            <p style="color: red;"><%= messages.error[0] %></p>
+          <% } %>
           <form action="/users/login" method="POST">
             <div class="form-login">
               <label for="email">Email :</label>

@@ -1,36 +1,41 @@
 const express = require("express");
 const router = express.Router();
 const reservationsController = require("../controllers/reservationsController");
+const authMiddleware = require("../middlewares/authMiddleware");
 
 /**
  * Créer une réservation
  */
-router.post("/", reservationsController.createReservation);
+router.post("/", authMiddleware, reservationsController.createReservation);
 
 /**
  * Lister toutes les réservations
  */
 
-router.get("/", reservationsController.getAllReservations);
+router.get("/", authMiddleware, reservationsController.getAllReservations);
 
 /**
  * Formulaire de mofification d'une réservation
  */
-router.get("/:id/edit", reservationsController.showEditReservationForm);
+router.get(
+  "/:id/edit",
+  authMiddleware,
+  reservationsController.showEditReservationForm
+);
 
 /**
  * Récupérer une réservation par son numéro
  */
-router.get("/:id", reservationsController.getReservationById);
+router.get("/:id", authMiddleware, reservationsController.getReservationById);
 
 /**
  * Modifier une réservation
  */
-router.put("/:id", reservationsController.updateReservation);
+router.put("/:id", authMiddleware, reservationsController.updateReservation);
 
 /**
  * Supprimer une réservation
  */
-router.delete("/:id", reservationsController.deleteReservation);
+router.delete("/:id", authMiddleware, reservationsController.deleteReservation);
 
 module.exports = router;

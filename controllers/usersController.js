@@ -45,18 +45,16 @@ exports.loginUser = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res
-        .status(401)
-        .json({ message: "Email ou mot de passe incorrect" });
+      req.flash("error", "Email ou mot de passe incorrect");
+      return res.redirect("/");
     }
     console.log("Utilisateur trouvé :", user);
 
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {
-      return res
-        .status(401)
-        .json({ message: "Email ou mot de passe incorrect" });
+      req.flash("error", "Email ou mot de passe incorrect");
+      return res.redirect("/");
     }
 
     // Création du token JWT
