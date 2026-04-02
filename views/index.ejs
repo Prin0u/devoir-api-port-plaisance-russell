@@ -8,12 +8,9 @@
   </head>
   <body>
     <div class="contenu-principal">
-      <header>
-        <h1>Port de plaisance Russell</h1>
-      </header>
-
+        <%- include('partials/navbar') %>
       <main>
-        <section>
+        <section class="intro">
           <h2>
             Bienvenue sur mon application de gestion du port de plaisance
             Russell.
@@ -52,8 +49,6 @@
         <section></section>
       </main>
     </div>
-    <footer>
-      <a href="/docapi">Consulter la documentation de l'API</a>
-    </footer>
+    <%- include('partials/footer') %>
   </body>
 </html>

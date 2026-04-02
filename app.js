@@ -92,6 +92,14 @@ mongoose
   })
   .then(() => console.log("Mongo DB connecté !"))
   .catch((err) => console.error("Erreur de connexion MongoDB :", err));
+/**
+ * Middleware global pour passer les variables isLoggedIn et user à TOUTES les vues
+ */
+app.use((req, res, next) => {
+  const token = req.cookies?.token;
+  res.locals.isLoggedIn = !!(token && token.length > 10);
+  next();
+});
 
 /**
  * Liaison des routes API

@@ -4,44 +4,94 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  margin: 0;
 }
-.contenu-principal {
-  flex: 1;
-}
-h1,
-h2,
-p {
+.intro h2,
+.intro p {
   text-align: center;
-  padding-top: 20px;
 }
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto;
+  background: white;
+  border: 0.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login h2 {
+  padding-top: 0;
+  margin-bottom: 1.5rem;
+  color: #1a2e4a;
+}
+
 .form-login {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2px;
-  margin: 2px;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1rem;
 }
+
 label {
-  width: 150px;
-  text-align: right;
-  margin: 5px;
+  text-align: left;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #475569;
+  width: 100%;
 }
+
 input {
-  width: 200px;
-  padding: 2px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border 0.2s;
+}
+
+input:focus {
+  border-color: #1a2e4a;
 }
 
 .connect-button {
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  margin-top: 0.5rem;
 }
-button {
-  font-size: medium;
+
+.connect-button button {
+  width: 100%;
+  padding: 10px;
+  background: #1a2e4a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
   cursor: pointer;
+  transition: background 0.2s;
 }
-footer a {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  cursor: pointer;
+
+.connect-button button:hover {
+  background: #2c4a6e;
+}
+@media (max-width: 1024px) {
+  .intro h2 {
+    font-size: 1.3rem;
+    padding: 0 1rem;
+  }
+
+  .intro p {
+    padding: 0 1rem;
+  }
+
+  .login {
+    margin: 0 auto;
+    width: auto;
+    align-items: center !important;
+  }
 }

@@ -1,23 +1,177 @@
 html,
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
+
 .contenu-principal {
   flex: 1;
 }
+
 h1 {
   text-align: center;
 }
-.user > * {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding: 0;
-  justify-content: flex-start;
+
+h2 {
+  text-align: center;
+  color: #1e3a5f;
+  margin-bottom: 20px;
 }
+
+.navbar {
+  background: #1a2e4a;
+  color: white;
+  padding: 0 2rem;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #cbd5e1;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #2c5f8a;
+  padding-bottom: 5px;
+}
+
+.user {
+  position: absolute;
+  top: 80px;
+  right: 20px;
+}
+
+.user-card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 16px 24px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  min-width: 220px;
+}
+
+.user-card p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.user-card .welcome {
+  font-weight: bold;
+  color: #1e3a5f;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.user-card .email {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.user-card .date {
+  font-size: 0.85rem;
+  color: #64748b;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 8px;
+  margin-top: 8px;
+}
+
+.user-card .btn-logout {
+  display: inline-block;
+  background-color: #ef4444;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.user-card .btn-logout:hover {
+  background-color: #b91c1c;
+}
+
 .reservations {
   text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 60px;
+}
+
+.reservations ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.reservations li {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  text-align: left;
+  transition: 0.2s ease;
+}
+
+.reservations li:hover {
+  background-color: #f1f5f9;
+  transform: translateX(5px);
+}
+
+.reservations li strong {
+  color: #1e3a5f;
+}
+
+.reservations p {
+  color: #64748b;
+  font-style: italic;
+  padding: 20px;
+}
+@media (max-width: 1024px) {
+  .user {
+    position: static !important;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .user-card {
+    text-align: center !important;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .reservations {
+    margin-top: 0 !important;
+  }
 }

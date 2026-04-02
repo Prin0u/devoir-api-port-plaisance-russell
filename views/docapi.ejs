@@ -5,7 +5,8 @@
   <title>Documentation de l'API</title>
   <link rel="stylesheet" href="/css/docapi.css">
 </head>
-<body>
+<body>      
+  <%- include('partials/navbar') %>
     <header>
   <h1>Documentation de l'API</h1>
 
@@ -14,7 +15,7 @@
 </header>
 <main>
   <section class="endpoint">
-    <h2>GET /users</h2>
+    <h2><span class="badge-get">GET</span> /users</h2>
     <p><strong>Description :</strong> Récupère la liste de tous les utilisateurs.</p>
     <p><strong>Méthode :</strong> GET</p>
     <p><strong>Paramètres :</strong> Aucun</p>
@@ -30,7 +31,7 @@
   </section>
 
   <section class="endpoint">
-    <h2>GET /users/:id</h2>
+    <h2><span class="badge-get">GET</span> /users/:id</h2>
     <p><strong>Description :</strong> Récupère un utilisateur par son ID.</p>
     <p><strong>Méthode :</strong> GET</p>
     <p><strong>Paramètre :</strong> <code>:id</code> = identifiant de l'utilisateur</p>
@@ -44,7 +45,7 @@
   </section>
 
   <section class="endpoint">
-    <h2>POST /users</h2>
+    <h2><span class="badge-post">POST</span> /users</h2>
     <p><strong>Description :</strong> Crée un nouvel utilisateur.</p>
     <p><strong>Méthode :</strong> POST</p>
     <p><strong>Body requis (JSON) :</strong></p>
@@ -67,8 +68,6 @@
     </ul>
   </section>
 </main>
-<footer>
-    <a href="/dashboard">Retour au tableau de bord</a>
-</footer>
+<%- include('partials/footer') %>
 </body>
 </html>

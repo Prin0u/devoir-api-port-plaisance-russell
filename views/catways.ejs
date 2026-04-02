@@ -7,17 +7,9 @@
     <title>Gestion des Catways - Port de plaisance Russell</title>
   </head>
   <body>
+    <%- include('partials/navbar') %>
     <header>
       <h1>Gestion des Catways</h1>
-      <nav>
-        <ul>
-          <li><a href="/dashboard">Tableau de bord</a></li>
-          <li><a href="/docapi">Documentation API</a></li>
-          <li>  <a href="#" onclick="window.history.back(); return false;">Retour</a></li>
-
-          <li><a href="/">Déconnexion</a></li>
-        </ul>
-      </nav>
     </header>
     <main>
       <% if (messages && Object.keys(messages).length > 0) { %>
@@ -28,8 +20,33 @@
             <% }) %>
           <% }) %>
         </div>
-      <% } %>
-      <h2>Liste des Catways</h2>
+      <% } %>      
+      <section class="create-catways">
+        <h2>Créer un nouveau Catway</h2>
+        <form action="/catways" method="POST">
+          <label for="catwayNumber">Numéro :</label>
+          <input type="text" name="catwayNumber" id="catwayNumber" required />
+
+          <label for="catwayType">Type :</label>
+          <select name="catwayType" id="catwayType" required>
+            <option value="">-- Choisir un type --</option>
+            <option value="petit">Petit</option>
+            <option value="moyen">Moyen</option>
+            <option value="long">Grand</option>
+          </select>
+
+          <label for="catwayState">État :</label>
+          <select id="catwayState" name="catwayState" required>
+            <option value="">-- Choisir un état --</option>
+            <option value="disponible">Disponible</option>
+            <option value="occupé">Occupé</option>
+            <option value="en maintenance">En maintenance</option>
+          </select>
+          <button type="submit">Ajouter</button>
+        </form>
+      </section>
+      <h2>Liste des Catways</h2>      
+
       <section class="catways-list">
         
         <% if(catways.length === 0) { %>
@@ -55,14 +72,16 @@
                   action="/catways/<%= catway._id %>?_method=DELETE"
                   method="POST"
                 >
+                <a href="/catways/<%= catway._id %>/edit" class="btn-edit">Modifier</a>
                   <button
+                  class="btn-danger"
                     type="submit"
                     onclick="return confirm('Confirmer la suppression ?')"
                   >
                     Supprimer
                   </button>
                 </form>
-                <a href="/catways/<%= catway._id %>/edit">Modifier</a>
+                
               </td>
             </tr>
             <% }) %>
@@ -70,30 +89,8 @@
         </table>
         <% } %>
       </section>
-      <section class="create-catways">
-        <h2>Créer un nouveau Catway</h2>
-        <form action="/catways" method="POST">
-          <label for="catwayNumber">Numéro :</label>
-          <input type="text" name="catwayNumber" id="catwayNumber" required />
 
-          <label for="catwayType">Type :</label>
-          <select name="catwayType" id="catwayType" required>
-            <option value="">-- Choisir un type --</option>
-            <option value="petit">Petit</option>
-            <option value="moyen">Moyen</option>
-            <option value="long">Grand</option>
-          </select>
-
-          <label for="catwayState">État :</label>
-          <select id="catwayState" name="catwayState" required>
-            <option value="">-- Choisir un état --</option>
-            <option value="disponible">Disponible</option>
-            <option value="occupé">Occupé</option>
-            <option value="en maintenance">En maintenance</option>
-          </select>
-          <button type="submit">Ajouter</button>
-        </form>
-      </section>
     </main>
+    <%- include('partials/footer') %>
   </body>
 </html>

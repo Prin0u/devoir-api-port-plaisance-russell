@@ -46,7 +46,9 @@ router.delete("/:email", authMiddleware, userController.deleteUser);
  * Déconnexion d'un utilisateur
  */
 router.post("/logout", (req, res) => {
-  res.cookie("token", " ", { maxAge: 0, httpOnly: true });
+  res.clearCookie("token", {
+    httpOnly: true,
+  });
   res.redirect("/");
 });
 

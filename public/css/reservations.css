@@ -1,5 +1,29 @@
+@media (max-width: 1024px) {
+  .reservations-list {
+    overflow-x: auto;
+    padding: 0 1rem;
+  }
+
+  .reservations-list table {
+    min-width: 600px; /* un peu plus large que catways car plus de colonnes */
+  }
+
+  .create-reservations form {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+}
+
 html,
 body {
+  margin: 0;
   height: 100%;
   font-family: Arial, sans-serif;
 }
@@ -7,37 +31,6 @@ body {
 h1,
 h2 {
   text-align: center;
-}
-
-table {
-  border-collapse: collapse;
-  margin-top: 20px;
-  text-align: center;
-  width: 100%;
-  max-width: 800px;
-}
-.reservations-list {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.reservations-list table {
-  width: 100%;
-  max-width: 800px;
-  border-collapse: collapse;
-}
-th,
-td {
-  border: 1px solid #ccc;
-  padding: 10px 15px;
-  text-align: center;
-  vertical-align: middle;
-}
-
-button {
-  font-size: small;
-  cursor: pointer;
 }
 
 #flash-messages {
@@ -48,11 +41,59 @@ button {
   margin: 20px 0;
   text-align: center;
   font-size: large;
-  color: red;
+  color: lightgreen;
 }
+
+.reservations-list {
+  display: flex;
+  justify-content: center;
+}
+
+.reservations-list table {
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse;
+}
+
+table {
+  border-collapse: collapse;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 1rem;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.reservations-list tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.reservations-list tbody tr:hover {
+  background-color: #f0f4f8;
+  transition: 0.2s ease;
+}
+
+td:last-child {
+  white-space: nowrap;
+}
+
+td:last-child form {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
+
 .create-reservations {
   display: flex;
-  flex-direction: column; /* IMPORTANT pour aligner en colonne */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
@@ -60,7 +101,7 @@ button {
 
 .create-reservations form {
   display: flex;
-  flex-direction: column; /* IMPORTANT aussi */
+  flex-direction: column;
   gap: 15px;
   width: 300px;
 }
@@ -81,4 +122,54 @@ button {
   padding: 10px;
   font-size: 1rem;
   cursor: pointer;
+  background-color: #bfdbfe;
+  border: none;
+  border-radius: 6px;
+}
+
+button {
+  font-size: small;
+  cursor: pointer;
+  background-color: #bfdbfe;
+  border: none;
+  border-radius: 6px;
+}
+button:hover {
+  background-color: #93c5fd;
+  transition: 0.3s;
+}
+.btn-edit {
+  display: inline-block;
+  background-color: #bfdbfe;
+  color: #1e3a8a;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.btn-edit:hover {
+  background-color: #93c5fd;
+}
+
+.btn-danger {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-danger:hover {
+  background-color: #b91c1c;
+}
+
+td:last-child .btn-edit,
+td:last-child .btn-danger {
+  padding: 4px 10px;
+  margin: 0 2px;
+  width: auto;
 }

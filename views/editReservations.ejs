@@ -6,6 +6,8 @@
     <title>Modifier une réservation</title>
   </head>
   <body>
+    <%- include('partials/navbar') %>
+
     <h1>Modifier la réservation</h1>
     <section class="edit-reservations">
       <form
@@ -59,7 +61,8 @@
 
         <button type="submit">Enregistrer les modifications</button>
       </form>
-      <a href="/reservations">Annuler</a>
+      <a href="/reservations" class="btn-cancel">Annuler</a>
     </section>
+    <%- include('partials/footer') %>
   </body>
 </html>
