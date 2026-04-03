@@ -19,6 +19,10 @@
   h2 {
     font-size: 1.2rem;
   }
+  .btn-create {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
 }
 
 html,
