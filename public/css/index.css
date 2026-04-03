@@ -95,7 +95,7 @@ input:focus {
     align-items: center !important;
   }
   .nav-container {
-    justify-content: center;
+    justify-content: center !important;
   }
 
   .burger {
