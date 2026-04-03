@@ -125,12 +125,12 @@ td:last-child {
 button {
   font-size: small;
   cursor: pointer;
-  background-color: #bfdbfe;
+  background-color: #93c5fd;
   border: none;
   border-radius: 6px;
 }
-button:hover {
-  background-color: #93c5fd;
+.btn-create:hover {
+  background-color: #60a5fa;
   transition: 0.3s;
 }
 .btn-edit {

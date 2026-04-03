@@ -12,9 +12,9 @@
     <main>
       <section class="user">
         <div class="user-card">
-          <p class="welcome">👋 Bienvenue <%= user.username %> !</p>
-          <p class="email">📧 <%= user.email %></p>
-          <p class="date">📅 Date du jour : <%= currentDate %></p>
+          <p class="welcome">Bienvenue <%= user.username %> !</p>
+          <p class="email"><%= user.email %></p>
+          <p class="date">Date du jour : <%= currentDate %></p>
           <form action="/users/logout" method="POST">
             <button type="submit" class="btn-logout">Déconnexion</button>
           </form>        

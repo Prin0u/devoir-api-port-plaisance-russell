@@ -50,18 +50,18 @@ main {
   padding: 10px;
   font-size: 1rem;
   cursor: pointer;
-  background-color: #bfdbfe;
+  background-color: #93c5fd;
   border: none;
   border-radius: 6px;
 }
 
 .edit-users button:hover {
-  background-color: #93c5fd;
+  background-color: #60a5fa;
 }
 
 .btn-cancel {
   display: inline-block;
-  background-color: #bfdbfe;
+  background-color: #93c5fd;
   padding: 0.5rem 1.5rem;
   border-radius: 6px;
   text-decoration: none;
@@ -74,5 +74,5 @@ main {
 }
 
 .btn-cancel:hover {
-  background-color: #93c5fd;
+  background-color: #60a5fa;
 }

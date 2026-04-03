@@ -21,7 +21,11 @@
   .burger {
     display: flex;
   }
-
+  .burger span:hover {
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
   .nav-links {
     max-height: 0;
     overflow: hidden;

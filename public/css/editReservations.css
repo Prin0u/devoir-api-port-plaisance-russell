@@ -40,15 +40,15 @@ h1 {
   cursor: pointer;
   border: none;
   border-radius: 6px;
-  background-color: #bfdbfe;
+  background-color: #93c5fd;
 }
 .edit-reservations button:hover {
-  background-color: #93c5fd;
+  background-color: #60a5fa;
   transition: 0.3s;
 }
 .btn-cancel {
   display: inline-block;
-  background-color: #bfdbfe;
+  background-color: #93c5fd;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   text-decoration: none;
@@ -58,5 +58,5 @@ h1 {
 }
 
 .btn-cancel:hover {
-  background-color: #93c5fd;
+  background-color: #60a5fa;
 }
