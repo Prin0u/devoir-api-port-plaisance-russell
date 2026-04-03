@@ -94,4 +94,12 @@ input:focus {
     width: auto;
     align-items: center !important;
   }
+  .nav-container {
+    justify-content: center;
+  }
+
+  .burger {
+    position: absolute;
+    right: 2rem;
+  }
 }

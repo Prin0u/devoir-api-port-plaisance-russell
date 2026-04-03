@@ -30,7 +30,7 @@
           <% reservations.forEach(res => { %>
           <li>
             <strong><%= res.boatName %></strong> - Quai <%= res.catwayNumber %>
-            jusqu'au <%= res.endDate %>
+            jusqu'au <%= new Date(res.endDate).toLocaleDateString('fr-FR') %>
           </li>
           <% }) %>
         </ul>
