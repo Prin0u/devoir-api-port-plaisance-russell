@@ -14,10 +14,7 @@
     width: 90%;
     max-width: 400px;
   }
-  .btn-create {
-    width: 100% !important;
-    box-sizing: border-box;
-  }
+
   /* Titre plus petit */
   h1 {
     font-size: 1.5rem;
